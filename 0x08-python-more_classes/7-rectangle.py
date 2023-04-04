@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-""" more practice on classes!!! """
+""" more practice with classes!!! """
 
 
 class Rectangle:
     """ initialize with the width and height with value checks
     Args:
-        width: width of the 4polygon 
-        height: height of box 
+        width: how wide dis 4polygon is
+        height: how tall dis box is
     Return: nonezero
     """
 
