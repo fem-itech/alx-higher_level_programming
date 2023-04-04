@@ -5,9 +5,9 @@
 class Rectangle:
     """ initialize with the width and height with value checks
     Args:
-        width: width of the 4polygon 
-        height: height of this box is
-    Return: nonezero
+        width: how phat dis 4polygon gon be
+        height: how tall dis box is
+    Return: nonezo
     """
 
     number_of_instances = 0
