@@ -1,36 +1,35 @@
 #!/usr/bin/python3
-# 2-matrix_divided.py
-"""Defines a matrix division function."""
+""" module that divides all elements of a matrix of similar sized rows """
 
 
 def matrix_divided(matrix, div):
-    """Divide all elements of a matrix.
-
+    """ function that returns a new matrix with each element divided by da div
     Args:
-        matrix (list): A list of lists of ints or floats.
-        div (int/float): The divisor.
-    Raises:
-        TypeError: If the matrix contains non-numbers.
-        TypeError: If the matrix contains rows of different sizes.
-        TypeError: If div is not an int or float.
-        ZeroDivisionError: If div is 0.
-    Returns:
-        A new matrix representing the result of the division.
+        matrix: a 2d array, each row should be the same size or else: error
+        div: a number that is not 0 or else error
+    Returns: a new matrix with each element adjusted to the div amount
     """
-    if (not isinstance(matrix, list) or matrix == [] or
-            not all(isinstance(row, list) for row in matrix) or
-            not all((isinstance(ele, int) or isinstance(ele, float))
-                    for ele in [num for row in matrix for num in row])):
-        raise TypeError("matrix must be a matrix (list of lists) of "
-                        "integers/floats")
-
-    if not all(len(row) == len(matrix[0]) for row in matrix):
-        raise TypeError("Each row of the matrix must have the same size")
-
-    if not isinstance(div, int) and not isinstance(div, float):
+    message = "matrix must be a matrix (list of lists) of integers/floats"
+    new = []
+    if not matrix or matrix is [[]] or matrix is None:
+        raise TypeError(message)
+    if type(div) is int or type(div) is float or div is None:
+        pass  # improper div value type checks
+    else:
         raise TypeError("div must be a number")
-
-    if div == 0:
+    if div == 0:  # if div is zero
         raise ZeroDivisionError("division by zero")
-
-    return ([list(map(lambda x: round(x / div, 2), row)) for row in matrix])
+    if matrix[0]:  # if matrix is empty or not
+        length = len(matrix[0])
+    else:
+        raise TypeError(message)
+    for i in range(len(matrix)):  # real work. the appending
+        if len(matrix[i]) is not length:
+            raise TypeError("Each row of the matrix must have the same size")
+        new.append([])
+        for j in matrix[i]:
+            if type(j) is int or type(j) is float:
+                new[i].append(round(j / div, 2))
+            else:
+                raise TypeError(message)
+    return new
